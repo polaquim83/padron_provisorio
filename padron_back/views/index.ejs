@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    Padron Provisorio
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>
+    Consulta al padrón provisorio
+  </h1>
+  <hr>
+  <br>
+  <div>
+    <form class="form" action="/search" method="post">
+      <div class="d-flex flex-wrap">
+        <div>
+          <div class="input-group mb-3">
+            <label class="p-2 form-label" for="dniNumber">Numero de DNI:</label>
+            <input class="form-control" type="number" class="dniNumber" id="dniNumber" name="numero">
+            <label class="p-2 form-label" for="dniType">Tipo de DNI:</label>
+            <select class="form-select-sm" name="tipo_ejemplar" id="dniType">
+              <option value="">Todos</option>
+              <option value="DNI-EA">DNI-EA</option>
+              <option value="DNI-EB">DNI-EB</option>
+              <option value="DNI-EC">DNI-EC</option>
+              <option value="DNI-ED">DNI-ED</option>
+              <option value="DNI-VERDE">DNI-VERDE</option>
+              <option value="LD">LD</option>
+              <option value="LD">LC</option>
+              <option value="LD">L</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <label class="p-2 form-label m-1" for="lastname">Apellido:</label>
+            <input class="form-control m-1 w-25" type="text" id="lastname" name="apellido">
+            <label class="p-2 form-label m-1" for="firstName">Nombre:</label>
+            <input class="form-control m-1 w-25" type="text" id="firstName" name="nombre">
+          </div>
+        </div>
+        <div>
+          <div>
+            <p class="ps-3 mx-auto mb-0 text-center">Año de nacimiento:</p>
+            <div class="p-2 input-group">
+              <label class="p-1 form-label" for="bottomYear">desde:</label>
+              <input class="form-control w-25 text-center" type="number" id="bottomYear" name="bottomYear" min="1900"
+                max="2006" value="1900">
+              <label class="p-1 form-label" for="topYear">hasta:</label>
+              <input class="form-control w-25 text-center" type="number" id="topYear" name="topYear" max="2006"
+                min="1900" value="2006">
+            </div>
+          </div>
+          <div class="d-flex">
+            <p class="p-2">Genero:</p>
+            <div class="form-check m-3">
+              <input class="form-check-input" type="radio" name="genero" id="genreAll" checked value="">
+              <label class="form-check-label" for="genreAll">Ambos </label>
+            </div>
+            <div class="form-check m-3">
+              <label class="form-check-label" for="genreF">Femenino </label>
+              <input class="form-check-input" type="radio" name="genero" id="genreF" value="F">
+            </div>
+            <div class="form-check m-3">
+              <label class="form-check-label" for="genreM">Masculino</label>
+              <input class="form-check-input" type="radio" name="genero" id="genreM" value="M">
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="p-2 input-group w-75">
+            <label class="form-label p-2" for="adress">Domicilio: </label>
+            <input class="form-control w-50 mb-3" type="text" name="domicilio" id="adress">
+            <label class="form-label p-2" for="city">Localidad: </label>
+            <input class="form-control w-25 mb-3" type="text" name="localidad" id="city">
+            <label class="form-label p-2" for="postalCode">Código postal: </label>
+            <input class="form-control w-25 mb-3" type="text" name="codigo_postal" id="postalCode">
+            <label class="form-label p-2" for="province">Provincia: </label>
+            <select class="form-select form-select-sm mb-3 w-50" name="provincia" id="province">
+              <option value="" selected>Todas</option>
+              <option value="BS_AS">Buenos Aires</option>
+              <option value="CAP_FED">CABA</option>
+              <option value="CATAMARCA">Catamarca</option>
+              <option value="CHACO">Chaco</option>
+              <option value="CHUBUT">Chubut</option>
+              <option value="CORDOBA">Córdoba</option>
+              <option value="CORRIENTES">Corrientes</option>
+              <option value="ENTRE_RIOS">Entre Rios</option>
+              <option value="EXTERIOR">En el Exterior</option>
+              <option value="FORMOSA">Formosa</option>
+              <option value="JUJUY">Jujuy</option>
+              <option value="LA_PAMPA">La Pampa</option>
+              <option value="LA_RIOJA">La Rioja</option>
+              <option value="MENDOZA">Mendoza</option>
+              <option value="MISIONES">Misiones</option>
+              <option value="NEUQUEN">Neuquen</option>
+              <option value="RIO_NEGRO">Rio Negro</option>
+              <option value="SALTA">Salta</option>
+              <option value="SAN_JUAN">San Juan</option>
+              <option value="SAN_LUIS">San Luis</option>
+              <option value="SANTA_CRUZ">Santa Cruz</option>
+              <option value="SANTA_FE">Santa Fé</option>
+              <option value="SGO_DEL_ESTERO">Santiago del Estero</option>
+              <option value="TIERRA_DEL_FUEGO">Tierra del Fuego</option>
+              <option value="TUCUMAN">Tucumán</option>
+            </select>
+          </div>
+          <div class="input-group w-75">
+            <label class="form-label p-2" for="section">Sección: </label>
+            <input class="form-control mb-3" type="text" name="seccion" id="section">
+            <label class="form-label p-2" for="circuit">Circuito: </label>
+            <input class="form-control mb-3" type="text" name="circuito" id="circuit">
+          </div>
+          <div class="w-25 mb-2 input-group">
+            <label class="form-label p-2" for="nationality">Tipo Nacionalidad: </label>
+            <select class="form-select form-select-sm mb-3" name="tipo_nacionalidad" id="nationality">
+              <option value="">Todos</option>
+              <option value="ARGENTINO NATIVO">Argentino Nativo</option>
+              <option value="NATURALIZADO">Naturalizado</option>
+              <option value="POR OPCION">Por opción</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 w-50 m-auto">
+        <input class="btn btn-primary" type="submit" value="Buscar">
+        <input class="btn btn-danger" type="reset" value="Limpiar">
+      </div>
+    </form>
+  </div>
+  <% if (result) { %>
+
+    <h4 class="text-center btn-success p-2">Cantidad de resultados = <%= result.count %>
+        <% } %>
+    </h4>
+    <table class="table table-striped">
+      <tr class="table-secondary">
+        <th>Numero DNI</th>
+        <th>Tipo Ejemplar</th>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        <th>Clase</th>
+        <th>Genero</th>
+        <th>Domicilio</th>
+        <th>Seccion</th>
+        <th>Circuito</th>
+        <th>Localidad</th>
+        <th>Código postal</th>
+        <th>Provincia</th>
+        <th>Fecha Domicilio</th>
+        <th>Tipo nacionalidad</th>
+      </tr>
+      <% if (result && result.rows) { %>
+        <% for( let i=0; i < result.rows.length; i++ ) { %>
+          <tr class="table-light">
+            <td>
+              <%= result.rows[i].numero %>
+            </td>
+            <td>
+              <%= result.rows[i].tipo_ejemplar %>
+            </td>
+            <td>
+              <%= result.rows[i].apellido %>
+            </td>
+            <td>
+              <%= result.rows[i].nombre %>
+            </td>
+            <td>
+              <%= result.rows[i].clase %>
+            </td>
+            <td>
+              <%= result.rows[i].genero %>
+            </td>
+            <td>
+              <%= result.rows[i].domicilio %>
+            </td>
+            <td>
+              <%= result.rows[i].seccion %>
+            </td>
+            <td>
+              <%= result.rows[i].circuito %>
+            </td>
+            <td>
+              <%= result.rows[i].localidad %>
+            </td>
+            <td>
+              <%= result.rows[i].codigo_postal %>
+            </td>
+            <td>
+              <%= result.rows[i].provincia %>
+            </td>
+            <td>
+              <%= result.rows[i].fecha_domicilio %>
+            </td>
+            <td>
+              <%= result.rows[i].tipo_nacionalidad %>
+            </td>
+          </tr>
+          <% } %>
+            <% } else { %>
+              <tr>
+                <td colspan="14"> Sin resultados</td>
+              </tr>
+              <% } %>
+    </table>
+</body>
+
+</html>
