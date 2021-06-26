@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Padron Provisorio
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>
+        Consulta al padrón provisorio
+    </h1>
+    <hr>
+
+    <% if (result) { %>
+        <table class="table table-striped">
+            <tr class="table-secondary">
+                <th>Provincia</th>
+                <th>Cantidad en Padron</th>
+            </tr>
+            <% for( let i=0; i < result.length; i++ ) { %>
+                <tr class="table-light">
+                    <td>
+                        <%= result[i].provincia %>
+                    </td>
+                    <td>
+                        <%= Number(result[i].count).toLocaleString('es-AR') %>
+                    </td>
+                </tr>
+                <% } } else { %>
+                    <tr>
+                        <td colspan="14"> Sin resultados</td>
+                    </tr>
+                    <% } %>
+        </table>
+</body>
+
+</html>

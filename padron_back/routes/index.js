@@ -5,7 +5,8 @@ const mainController = require("../controller/mainController");
 
 /* GET home page. */
 router.get("/", mainController.index);
-router.post("/search", mainController.search);
+router.post("/search/:page", mainController.search);
+router.get("/count", mainController.count);
 router.post("/api", apiController.search);
 router.get("/api/ejemplares", apiController.ejemplares);
 

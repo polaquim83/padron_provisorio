@@ -20,12 +20,13 @@
   <hr>
   <br>
   <div>
-    <form class="form" action="/search" method="post">
+    <form class="form" action="/search/1" method="post">
       <div class="d-flex flex-wrap">
         <div>
           <div class="input-group mb-3">
             <label class="p-2 form-label" for="dniNumber">Numero de DNI:</label>
-            <input class="form-control" type="number" class="dniNumber" id="dniNumber" name="numero">
+            <input class="form-control" type="number" class="dniNumber" id="dniNumber" name="numero"
+              value=<%=locals.oldData && oldData.numero ? oldData.numero : "" %> >
             <label class="p-2 form-label" for="dniType">Tipo de DNI:</label>
             <select class="form-select-sm" name="tipo_ejemplar" id="dniType">
               <option value="">Todos</option>
@@ -41,9 +42,11 @@
           </div>
           <div class="input-group mb-3">
             <label class="p-2 form-label m-1" for="lastname">Apellido:</label>
-            <input class="form-control m-1 w-25" type="text" id="lastname" name="apellido">
+            <input class="form-control m-1 w-25" type="text" id="lastname" name="apellido" value=<%=locals.oldData &&
+              oldData.apellido ? oldData.apellido : "" %>>
             <label class="p-2 form-label m-1" for="firstName">Nombre:</label>
-            <input class="form-control m-1 w-25" type="text" id="firstName" name="nombre">
+            <input class="form-control m-1 w-25" type="text" id="firstName" name="nombre" value=<%=locals.oldData &&
+              oldData.nombre ? oldData.nombre : "" %>>
           </div>
         </div>
         <div>
@@ -52,79 +55,131 @@
             <div class="p-2 input-group">
               <label class="p-1 form-label" for="bottomYear">desde:</label>
               <input class="form-control w-25 text-center" type="number" id="bottomYear" name="bottomYear" min="1900"
-                max="2006" value="1900">
+                max="2006" value=<%=locals.oldData && oldData.bottomYear ? oldData.bottomYear : "1900" %>>
               <label class="p-1 form-label" for="topYear">hasta:</label>
               <input class="form-control w-25 text-center" type="number" id="topYear" name="topYear" max="2006"
-                min="1900" value="2006">
+                min="1900" value=<%=locals.oldData && oldData.topYear ? oldData.topYear : "2006" %>>
             </div>
           </div>
           <div class="d-flex">
             <p class="p-2">Genero:</p>
             <div class="form-check m-3">
-              <input class="form-check-input" type="radio" name="genero" id="genreAll" checked value="">
+              <input class="form-check-input" type="radio" name="genero" id="genreAll" <%locals.oldData &&
+                oldData.genero ? "" : "checked" %> value="">
               <label class="form-check-label" for="genreAll">Ambos </label>
             </div>
             <div class="form-check m-3">
               <label class="form-check-label" for="genreF">Femenino </label>
-              <input class="form-check-input" type="radio" name="genero" id="genreF" value="F">
+              <input class="form-check-input" type="radio" name="genero" id="genreF" <%locals.oldData &&
+                oldData.genero=="M" ? "" : "checked" %> value="F">
             </div>
             <div class="form-check m-3">
               <label class="form-check-label" for="genreM">Masculino</label>
-              <input class="form-check-input" type="radio" name="genero" id="genreM" value="M">
+              <input class="form-check-input" type="radio" name="genero" id="genreM" <%locals.oldData &&
+                oldData.genero=="F" ? "" : "checked" %> value="M">
             </div>
           </div>
         </div>
         <div>
           <div class="p-2 input-group w-75">
             <label class="form-label p-2" for="adress">Domicilio: </label>
-            <input class="form-control w-50 mb-3" type="text" name="domicilio" id="adress">
+            <input class="form-control w-50 mb-3" type="text" name="domicilio" id="adress" value=<%=locals.oldData &&
+              oldData.domicilio ? oldData.domicilio : "" %>>
             <label class="form-label p-2" for="city">Localidad: </label>
-            <input class="form-control w-25 mb-3" type="text" name="localidad" id="city">
+            <input class="form-control w-25 mb-3" type="text" name="localidad" id="city" value=<%=locals.oldData &&
+              oldData.localidad ? oldData.localidad : "" %>>
             <label class="form-label p-2" for="postalCode">Código postal: </label>
-            <input class="form-control w-25 mb-3" type="text" name="codigo_postal" id="postalCode">
+            <input class="form-control w-25 mb-3" type="text" name="codigo_postal" id="postalCode"
+              value=<%=locals.oldData && oldData.codigo_postal ? oldData.codigo_postal : "" %>>
             <label class="form-label p-2" for="province">Provincia: </label>
             <select class="form-select form-select-sm mb-3 w-50" name="provincia" id="province">
-              <option value="" selected>Todas</option>
-              <option value="BS_AS">Buenos Aires</option>
-              <option value="CAP_FED">CABA</option>
-              <option value="CATAMARCA">Catamarca</option>
-              <option value="CHACO">Chaco</option>
-              <option value="CHUBUT">Chubut</option>
-              <option value="CORDOBA">Córdoba</option>
-              <option value="CORRIENTES">Corrientes</option>
-              <option value="ENTRE_RIOS">Entre Rios</option>
-              <option value="EXTERIOR">En el Exterior</option>
-              <option value="FORMOSA">Formosa</option>
-              <option value="JUJUY">Jujuy</option>
-              <option value="LA_PAMPA">La Pampa</option>
-              <option value="LA_RIOJA">La Rioja</option>
-              <option value="MENDOZA">Mendoza</option>
-              <option value="MISIONES">Misiones</option>
-              <option value="NEUQUEN">Neuquen</option>
-              <option value="RIO_NEGRO">Rio Negro</option>
-              <option value="SALTA">Salta</option>
-              <option value="SAN_JUAN">San Juan</option>
-              <option value="SAN_LUIS">San Luis</option>
-              <option value="SANTA_CRUZ">Santa Cruz</option>
-              <option value="SANTA_FE">Santa Fé</option>
-              <option value="SGO_DEL_ESTERO">Santiago del Estero</option>
-              <option value="TIERRA_DEL_FUEGO">Tierra del Fuego</option>
-              <option value="TUCUMAN">Tucumán</option>
+              <option value="" <%=locals.oldData && oldData.provincia ? "" : "selected" %>>Todas</option>
+              <option value="BS_AS" <%=locals.oldData && oldData.provincia=="BS_AS" ? "selected" : "" %>>Buenos Aires
+              </option>
+              <option value="CAP_FED" <%=locals.oldData && oldData.provincia=="CAP_FED" ? "selected" : "" %>>CABA
+              </option>
+              <option value="CATAMARCA" <%=locals.oldData && oldData.provincia=="CATAMARCA" ? "selected" : "" %>
+                >Catamarca
+              </option>
+              <option value="CHACO" <%=locals.oldData && oldData.provincia=="CHACO" ? "selected" : "" %>>Chaco</option>
+              <option value="CHUBUT" <%=locals.oldData && oldData.provincia=="CHUBUT" ? "selected" : "" %>>Chubut
+              </option>
+              <option value="CORDOBA" <%=locals.oldData && oldData.provincia=="CORDOBA" ? "selected" : "" %>>Córdoba
+              </option>
+              <option value="CORRIENTES" <%=locals.oldData && oldData.provincia=="CORRIENTES" ? "selected" : "" %>
+                >Corrientes
+              </option>
+              <option value="ENTRE_RIOS" <%=locals.oldData && oldData.provincia=="ENTRE_RIOS" ? "selected" : "" %>>Entre
+                Rios
+              </option>
+              <option value="EXTERIOR" <%=locals.oldData && oldData.provincia=="EXTERIOR" ? "selected" : "" %>>En el
+                Exterior
+              </option>
+              <option value="FORMOSA" <%=locals.oldData && oldData.provincia=="FORMOSA" ? "selected" : "" %>>Formosa
+              </option>
+              <option value="JUJUY" <%=locals.oldData && oldData.provincia=="JUJUY" ? "selected" : "" %>>Jujuy</option>
+              <option value="LA_PAMPA" <%=locals.oldData && oldData.provincia=="LA_PAMPA" ? "selected" : "" %>>La Pampa
+              </option>
+              <option value="LA_RIOJA" <%=locals.oldData && oldData.provincia=="LA_RIOJA" ? "selected" : "" %>>La Rioja
+              </option>
+              <option value="MENDOZA" <%=locals.oldData && oldData.provincia=="MENDOZA" ? "selected" : "" %>>Mendoza
+              </option>
+              <option value="MISIONES" <%=locals.oldData && oldData.provincia=="MISIONES" ? "selected" : "" %>>Misiones
+              </option>
+              <option value="NEUQUEN" <%=locals.oldData && oldData.provincia=="NEUQUEN" ? "selected" : "" %>>Neuquen
+              </option>
+              <option value="RIO_NEGRO" <%=locals.oldData && oldData.provincia=="RIO_NEGRO" ? "selected" : "" %>>Rio
+                Negro
+              </option>
+              <option value="SALTA" <%=locals.oldData && oldData.provincia=="SALTA" ? "selected" : "" %>>Salta</option>
+              <option value="SAN_JUAN" <%=locals.oldData && oldData.provincia=="SAN_JUAN" ? "selected" : "" %>>San Juan
+              </option>
+              <option value="SAN_LUIS" <%=locals.oldData && oldData.provincia=="SAN_LUIS" ? "selected" : "" %>>San Luis
+              </option>
+              <option value="SANTA_CRUZ" <%=locals.oldData && oldData.provincia=="SANTA_CRUZ" ? "selected" : "" %>>Santa
+                Cruz
+              </option>
+              <option value="SANTA_FE" <%=locals.oldData && oldData.provincia=="SANTA_FE" ? "selected" : "" %>>Santa Fé
+              </option>
+              <option value="SGO_DEL_ESTERO" <%=locals.oldData && oldData.provincia=="SGO_DEL_ESTERO" ? "selected" : ""
+                %>
+                >Santiago del Estero</option>
+              <option value="TIERRA_DEL_FUEGO" <%=locals.oldData && oldData.provincia=="TIERRA_DEL_FUEGO" ? "selected"
+                : "" %>
+                >Tierra del Fuego</option>
+              <option value="TUCUMAN" <%=locals.oldData && oldData.provincia=="TUCUMAN" ? "selected" : "" %>>Tucumán
+              </option>
             </select>
           </div>
           <div class="input-group w-75">
             <label class="form-label p-2" for="section">Sección: </label>
-            <input class="form-control mb-3" type="text" name="seccion" id="section">
+            <input class="form-control mb-3" type="text" name="seccion" id="section" <%=locals.oldData &&
+              oldData.seccion ? oldData.seccion : "" %>>
             <label class="form-label p-2" for="circuit">Circuito: </label>
-            <input class="form-control mb-3" type="text" name="circuito" id="circuit">
+            <input class="form-control mb-3" type="text" name="circuito" id="circuit" <%=locals.oldData &&
+              oldData.circuito ? oldData.circuito : "" %>>
           </div>
-          <div class="w-25 mb-2 input-group">
+          <div class="w-50 mb-2 input-group">
             <label class="form-label p-2" for="nationality">Tipo Nacionalidad: </label>
             <select class="form-select form-select-sm mb-3" name="tipo_nacionalidad" id="nationality">
               <option value="">Todos</option>
-              <option value="ARGENTINO NATIVO">Argentino Nativo</option>
-              <option value="NATURALIZADO">Naturalizado</option>
-              <option value="POR OPCION">Por opción</option>
+              <option value="ARGENTINO NATIVO" <%=locals.oldData && oldData.tipo_nacionalidad=="ARGENTINO NATIVO"
+                ? "selected" : "" %>>Argentino Nativo</option>
+              <option value="NATURALIZADO" <%=locals.oldData && oldData.tipo_nacionalidad=="NATURALIZADO" ? "selected"
+                : "" %>
+                >Naturalizado</option>
+              <option value="POR OPCION" <%=locals.oldData && oldData.tipo_nacionalidad=="POR OPCION" ? "selected" : ""
+                %>>Por
+                opción</option>
+            </select>
+            <label class="form-label p-2" for="results">Cantidad de Resultados: </label>
+            <select class="form-control mb-3" type="select" name="resultsNumber" id="resultsNumber">
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="500">500</option>
+              <option value="1000">1000</option>
+              <option value="5000">5000</option>
+              <option value="10000">10000</option>
             </select>
           </div>
         </div>
@@ -137,9 +192,10 @@
   </div>
   <% if (result) { %>
 
-    <h4 class="text-center btn-success p-2">Cantidad de resultados = <%= result.count %>
+    <h4 class="text-center btn-success p-2">Cantidad de resultados = <%= Number(result.count).toLocaleString('es-AR') %>
         <% } %>
     </h4>
+
     <table class="table table-striped">
       <tr class="table-secondary">
         <th>Numero DNI</th>
@@ -204,6 +260,13 @@
             </td>
           </tr>
           <% } %>
+            <!-- <tr>
+              <th colspan="14" style="text-align: center;"> <a href=<%=pages.previous ? `/search/${page.previous}` : '#'
+                  %>>Anterior << </a>
+                    Páginas: <%= pages.current %> de <%= pages.total %> <a href=<%=pages.next ? `/search/${pages.next}`
+                          : '#' %>> Siguiente >> </a>
+              </th>
+            </tr> -->
             <% } else { %>
               <tr>
                 <td colspan="14"> Sin resultados</td>

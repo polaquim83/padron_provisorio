@@ -1,10 +1,18 @@
 module.exports = {
     development: {
         username: "root",
-        password: process.env.SQL_PASSWORD,
-        database: process.env.SQL_DATABASE,
+        password: "NewPassword",
+        database: "padron_provisorio",
         host: "127.0.0.1",
         dialect: "mysql",
+        options: {
+            pool: {
+                max: 5,
+                min: 0,
+                acquire: 60000,
+                idle: 20000,
+            },
+        },
     },
     test: {
         username: "root",
